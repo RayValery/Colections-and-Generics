@@ -18,14 +18,21 @@ public class MapLauncher{
                 map.put(word,count+1);
             }
         }
-        printMap(map);
+
+        printMap(convertToSet(map));
     }
 
-    private static void printMap(Map<String, Integer> map) {
-        Map<String,Integer> treeMap = new TreeMap<>(map);
-        Set<String> keys = treeMap.keySet();
-        for (String key : keys){
-            System.out.printf("%-10s %-10s\n",key, map.get(key));
+    private static NavigableSet<WordWrapper> convertToSet(Map<String, Integer> map) {
+        NavigableSet<WordWrapper> wordSet = new TreeSet<>();
+        for (Map.Entry<String,Integer> e : map.entrySet()){
+           wordSet.add(new WordWrapper(e.getKey(),e.getValue()));
+        }
+        return wordSet;
+    }
+
+    private static void printMap(NavigableSet<WordWrapper> wordSet) {
+        for (WordWrapper keyword : wordSet){
+            System.out.printf("%-10s %-10s\n",keyword.getWord(),keyword.getCount());
         }
     }
 }
