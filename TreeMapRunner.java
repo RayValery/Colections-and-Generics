@@ -5,16 +5,29 @@ import java.util.*;
 public class TreeMapRunner {
 
     public static void main(String[] args) {
-        NavigableMap<AverageStudentGrade,Set<SubjectGrade>> grades = createGrades();
-        printMap(grades, true);
+        NavigableMap<AverageStudentGrade, Set<SubjectGrade>> grades = createGrades();
+        //printMap(grades, true);
+        AverageStudentGrade border = grades.ceilingKey(new AverageStudentGrade("", 80));
+        NavigableMap<AverageStudentGrade, Set<SubjectGrade>> scholarshipStudents =
+                (NavigableMap<AverageStudentGrade, Set<SubjectGrade>>) grades.tailMap(border);
+        System.out.println("Scholarship students: ");
+        printMap(scholarshipStudents.descendingMap(), false);
+
+        AverageStudentGrade contender = grades.lowerKey(new AverageStudentGrade("", 80));
+        System.out.println("Contender is: ");
+        System.out.println(contender.toString());
+
+        System.out.println("\nHighest grade student:");
+        System.out.println(scholarshipStudents.descendingMap().firstEntry().getKey().toString());
     }
 
-    private static void printMap(NavigableMap<AverageStudentGrade,Set<SubjectGrade>> map, boolean printValues){
+    private static void printMap(Map<AverageStudentGrade, Set<SubjectGrade>> map, boolean printValues) {
         Set<AverageStudentGrade> keys = map.keySet();
-        for (AverageStudentGrade key : map.keySet()){
+        for (AverageStudentGrade key : map.keySet()) {
             System.out.println(key.toString());
-            if(printValues){
-            System.out.println(map.get(key).toString());}
+            if (printValues) {
+                System.out.println(map.get(key).toString());
+            }
         }
     }
 
@@ -26,7 +39,7 @@ public class TreeMapRunner {
         return sum / grades.size();
     }
 
-    private static NavigableMap<AverageStudentGrade,Set<SubjectGrade>> createGrades() {
+    private static NavigableMap<AverageStudentGrade, Set<SubjectGrade>> createGrades() {
         Set<SubjectGrade> alexGrade = new HashSet<>();
         alexGrade.add(new SubjectGrade("History", 80));
         alexGrade.add(new SubjectGrade("Math", 85));

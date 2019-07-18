@@ -22,9 +22,9 @@ public class AverageStudentGrade implements Comparable {
         if (!(o instanceof AverageStudentGrade)) {
             throw new UnsupportedOperationException();
         } else if (this.getAverGrade() < ((AverageStudentGrade) o).getAverGrade()) {
-            return 1;
-        } else if (this.getAverGrade() > ((AverageStudentGrade) o).getAverGrade()) {
             return -1;
+        } else if (this.getAverGrade() > ((AverageStudentGrade) o).getAverGrade()) {
+            return 1;
         } else return (this.getName().compareTo(((AverageStudentGrade) o).getName()));
 
     }
