@@ -1,4 +1,4 @@
-package com.company;
+package Map;
 
 public class WordWrapper implements Comparable<WordWrapper>{
     private final String word;
