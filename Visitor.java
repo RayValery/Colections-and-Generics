@@ -9,7 +9,7 @@ class AutoVisitor implements Visitor {
     public void visit(Auto auto) {
         String prefics = "";
         if (auto instanceof Car) {
-            prefics = "Car model: ";
+            prefics = "Factory_Singleton_Patterns.Factory_Singleton_Patterns.MusicalInstrument model: ";
         }
         if (auto instanceof Track) {
             prefics = "Track model: ";
