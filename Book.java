@@ -1,4 +1,4 @@
-package com.company;
+package Queue.BookTasks;
 
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
