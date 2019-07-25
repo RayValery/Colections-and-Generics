@@ -41,3 +41,27 @@ class NewJeep extends Jeep {
         System.out.println("Stop NewJeep");
     }
 }
+
+class Moskvich extends Car {
+    @Override
+    public void drive() {
+        System.out.println("\nMove Moskvich");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Stop Moskvich");
+    }
+}
+
+class Slavuta extends Car {
+    @Override
+    public void drive() {
+        System.out.println("\nMove Slavuta");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Stop Slavuta");
+    }
+}
