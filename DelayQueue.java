@@ -1,4 +1,4 @@
-package com.company;
+package Queue;
 
 import java.util.Iterator;
 import java.util.concurrent.Delayed;
