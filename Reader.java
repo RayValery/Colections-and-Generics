@@ -1,7 +1,9 @@
 package IO_Streams;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,5 +36,16 @@ public class Reader {
             e.printStackTrace();
         }
         return students;
+    }
+
+    public void nioFileReader(String source) throws IOException {
+        Path path = Paths.get(source);
+        Charset coding = Charset.forName("UTF-8");
+        try(BufferedReader reader = Files.newBufferedReader(path, coding)){
+            String l;
+            while ((l=reader.readLine())!= null){
+                System.out.println(l);
+            }
+        }
     }
 }

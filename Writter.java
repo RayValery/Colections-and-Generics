@@ -4,6 +4,7 @@ import Map.TreeMap.AverageStudentGrade;
 import Map.TreeMap.SubjectGrade;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -62,6 +63,14 @@ public class Writter {
             }
         }
         formatter.close();
+    }
+
+    public void nioWritter(String nameFile) throws IOException {
+        Path path = Paths.get(nameFile);
+        Charset coding = Charset.forName("UTF-8");
+        try(BufferedWriter writer = Files.newBufferedWriter(path, coding)){
+            writer.write("There are some characters in this string");
+        }
     }
 
 }
