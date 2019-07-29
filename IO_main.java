@@ -9,12 +9,13 @@ public class IO_main {
 
     private static final String source = "Grade_Book.txt";
     private static final String binaryFileName = "Objects.bin";
+    private static final String name = "nioFile.txt";
 
     public static void main(String[] args) throws IOException {
         NavigableMap<AverageStudentGrade, Set<SubjectGrade>> grades = TreeMapRunner.createGrades();
         Writter writter = new Writter();
         Reader reader = new Reader();
-        writter.writeFile(grades, source);
+        //writter.writeFile(grades, source);
         // reader.readFile(source);
         // writter.readWriteByte(source);
 
@@ -24,9 +25,12 @@ public class IO_main {
         //printList(reader, binaryFileName);
 
         FileUtils fileUtils = new FileUtils();
-        fileUtils.printIOFileDetail(source);
-        System.out.println("\n================================\n");
-        fileUtils.printIOFileDetail("./");
+        //fileUtils.printIOFileDetail(source);
+        //System.out.println("\n================================\n");
+        //fileUtils.printIOFileDetail("./");
+
+        writter.nioWritter(name);
+        reader.nioFileReader(name);
     }
 
     private static void printList(Reader reader, String source) {
